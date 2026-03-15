@@ -1,19 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--
+    ConstraintLayout: layout raiz da tela.
+    Posiciona elementos usando restrições (constraints) como âncoras.
+    match_parent = ocupa toda a largura e altura disponível da tela.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--
+        ScrollView: permite rolar o conteúdo para cima e para baixo.
+        Essencial quando o conteúdo é maior que a altura da tela.
+        Só aceita UM filho direto — por isso usamos um LinearLayout dentro.
+        As constraints fixam ele nos 4 cantos da tela.
+    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!--
+            LinearLayout Vertical: organiza todos os elementos UM ABAIXO DO OUTRO.
+            orientation="vertical" define essa direção.
+            wrap_content na altura = cresce conforme o conteúdo (necessário no ScrollView).
+            padding="16dp" = espaço interno de 16dp em todos os lados.
+            background="#FFF8F0" = fundo creme levemente alaranjado.
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFFFFF">
+
+            <!--
+                ImageView da logo do app.
+                layout_height="140dp" = altura fixa da logo.
+                scaleType="fitCenter" = redimensiona a imagem mantendo
+                a proporção original, sem cortar nada.
+                src="@drawable/cozinha_express" = referencia o arquivo
+                cozinha_express.png que está na pasta drawable.
+                paddingTop="16dp" = espaço acima da logo.
+                paddingBottom="4dp" = espaço pequeno abaixo da logo.
+            -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cozinha_express"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"/>
+
+            <!--
+                Subtítulo abaixo da logo.
+                textColor="#888888" = cinza suave para não competir com a logo.
+                gravity="center" = centraliza o texto.
+                paddingBottom="24dp" = espaço generoso antes das receitas.
+            -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Receitas rápidas para o dia a dia"
+                android:textSize="14sp"
+                android:textColor="#888888"
+                android:gravity="center"
+                android:paddingBottom="24dp"/>
+
+            <!-- ============================================================
+                 RECEITA 1 — Macarrão ao Alho e Óleo
+                 CardView: cria um cartão com bordas arredondadas e sombra.
+                 cardCornerRadius="12dp" = arredondamento das bordas.
+                 cardElevation="4dp" = intensidade da sombra embaixo do card.
+                 layout_marginBottom="16dp" = espaço abaixo do card.
+            ============================================================ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <!--
+                    LinearLayout Vertical dentro do card:
+                    empilha a imagem em cima e as informações embaixo.
+                -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--
+                        ImageView da receita.
+                        layout_height="200dp" = altura fixa da imagem.
+                        scaleType="centerCrop" = preenche todo o espaço
+                        recortando as bordas se necessário, sem distorcer.
+                        src="@drawable/macarrao_alho_oleo" = imagem da receita.
+                    -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/macarrao_alho_oleo"/>
+
+                    <!--
+                        LinearLayout Vertical: área de texto abaixo da imagem.
+                        padding="12dp" = espaço interno em todos os lados.
+                    -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <!--
+                            Nome da receita em negrito.
+                            textSize="18sp" = tamanho de fonte médio-grande.
+                            textColor="#2C2C2C" = quase preto, mais suave que #000000.
+                            paddingBottom="6dp" = espaço antes das informações abaixo.
+                        -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Macarrão ao Alho e Óleo"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C2C2C"
+                            android:paddingBottom="6dp"/>
+
+                        <!--
+                            LinearLayout HORIZONTAL: coloca os filhos LADO A LADO.
+                            orientation="horizontal" define essa direção.
+                            Usado para colocar o rótulo "⏱ Tempo:" ao lado do valor.
+                            paddingBottom="4dp" = pequeno espaço antes da linha abaixo.
+                        -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="4dp">
+
+                            <!--
+                                Rótulo em laranja e negrito.
+                                wrap_content = ocupa só o espaço do seu texto.
+                            -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⏱ Tempo: "
+                                android:textStyle="bold"
+                                android:textColor="#F47920"/>
+
+                            <!-- Valor do tempo em cinza escuro -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20 minutos"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+
+                        <!--
+                            LinearLayout HORIZONTAL para ingredientes.
+                            Mesmo padrão do tempo, mas com o ícone de carrinho.
+                        -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🛒 Ingredientes: "
+                                android:textStyle="bold"
+                                android:textColor="#F47920"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Macarrão, alho, azeite, sal"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ============================================================
+                 RECEITA 2 — Panqueca Simples
+                 Mesma estrutura da Receita 1, apenas com dados diferentes.
+            ============================================================ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/panqueca_simples"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Panqueca Simples"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C2C2C"
+                            android:paddingBottom="6dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⏱ Tempo: "
+                                android:textStyle="bold"
+                                android:textColor="#F47920"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15 minutos"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🛒 Ingredientes: "
+                                android:textStyle="bold"
+                                android:textColor="#F47920"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Farinha, ovo, leite, sal"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ============================================================
+                 RECEITA 3 — Omelete Rápido
+                 Mesma estrutura das anteriores.
+            ============================================================ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/omelete_rapido"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Omelete Rápido"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C2C2C"
+                            android:paddingBottom="6dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⏱ Tempo: "
+                                android:textStyle="bold"
+                                android:textColor="#F47920"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10 minutos"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🛒 Ingredientes: "
+                                android:textStyle="bold"
+                                android:textColor="#F47920"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ovos, sal, queijo, manteiga"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--
+                Button: botão clicável para navegar para a Tela 3.
+                id="@+id/btnVerEquipe" = identificador único usado no Kotlin
+                para detectar o clique e executar a navegação.
+                layout_width="match_parent" = ocupa toda a largura da tela.
+                backgroundTint="#D35400" = cor de fundo laranja escuro.
+                textColor="#FFFFFF" = texto branco para contrastar com o fundo.
+                layout_marginTop="8dp" = espaço acima do botão.
+                layout_marginBottom="24dp" = espaço generoso abaixo do botão
+                para não ficar colado no fim da tela ao rolar.
+            -->
+            <Button
+                android:id="@+id/btnVerEquipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver Equipe"
+                android:backgroundTint="#F47920"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

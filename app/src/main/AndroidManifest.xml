@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
 
+<!-- Manifesto do aplicativo, onde são declaradas as atividades, permissões e outras configurações. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"> <!-- Faz a ferramenta de análise de código ignorar os erros relacionados a atividades não exportadas. -->
+
+<!--
+* Declaração da aplicação, onde são definidas as atividades, ícones, temas e outras configurações relacionadas à aplicação.
+* Sempre que estiver escrito android: significa que é um atributo do Android, e o valor é definido entre aspas.
+* android:allowBackup="true" → Permite que os dados do aplicativo sejam salvos e restaurados em caso de reinstalação ou troca de dispositivo.
+* android:dataExtractionRules="@xml/data_extraction_rules" → Especifica as regras para extração de dados do aplicativo.
+* android:fullBackupContent="@xml/backup_rules" → Especifica as regras para backup completo do aplicativo.
+* android:icon="@mipmap/ic_launcher" → Define o ícone do aplicativo, que é exibido na tela inicial e na lista de aplicativos.
+* android:label="@string/app_name" → Define o nome do aplicativo, que é exibido na tela inicial e na lista de aplicativos.
+* android:roundIcon="@mipmap/ic_launcher_round" → Define o ícone arredondado do aplicativo, que é usado em dispositivos que suportam ícones arredondados.
+* android:supportsRtl="true" → Indica que o aplicativo suporta layouts da direita para a esquerda, o que é importante para idiomas que são escritos dessa forma.
+* android:theme="@style/Theme.CozinhaExpress" → Define o tema do aplicativo, que é usado para estilizar a aparência do aplicativo, incluindo cores, fontes e outros elementos visuais.
+-->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,20 +25,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CozinhaExpress">
+
+<!--
+* Informa ao Android que existe uma tela chamada SplashActivity neste app.
+* Activity é uma tag usada para registrar uma tela do aplicativo.
+* android:name é um atributo que define qual classe representa essa tela.
+* O ponto antes de SplashActivity significa dentro do pacote principal do app.
+* android:exported="true" indica que esta atividade pode ser iniciada por componentes de outros aplicativos, como a tela de início do sistema operacional. Isso é necessário para a SplashActivity, pois ela é a tela inicial do aplicativo.
+-->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter> <!-- Define quando e como essa Activity pode ser iniciada -->
+                <action android:name="android.intent.action.MAIN" /> <!-- Especifica que esta é a atividade principal do aplicativo, ou seja, a primeira tela que será exibida quando o aplicativo for iniciado. -->
+
+                <category android:name="android.intent.category.LAUNCHER" /> <!-- Indica que esta atividade deve aparecer na tela de início do dispositivo, permitindo que os usuários iniciem o aplicativo a partir do menu de aplicativos. -->
+            </intent-filter>
+        </activity>
         <activity
             android:name=".IntegrantesActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- O atributo android:exported="false" indica que esta atividade não pode ser iniciada por componentes de outros aplicativos, ou seja, ela só pode ser acessada de dentro do próprio aplicativo. -->
+            android:exported="false" /> <!-- O atributo android:exported="false" indica que esta atividade não pode ser iniciada por componentes de outros aplicativos, ou seja, ela só pode ser acessada de dentro do próprio aplicativo. -->
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
     </application>
 

@@ -44,8 +44,8 @@
                 layout_height="140dp" = altura fixa da logo.
                 scaleType="fitCenter" = redimensiona a imagem mantendo
                 a proporção original, sem cortar nada.
-                src="@drawable/cozinha_express" = referencia o arquivo
-                cozinha_express.png que está na pasta drawable.
+                src="@drawable/logo" = referencia o arquivo
+                logo.png que está na pasta drawable.
                 paddingTop="16dp" = espaço acima da logo.
                 paddingBottom="4dp" = espaço pequeno abaixo da logo.
             -->
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/cozinha_express"
+                android:src="@drawable/logo"
                 android:paddingTop="16dp"
                 android:paddingBottom="4dp"/>
 

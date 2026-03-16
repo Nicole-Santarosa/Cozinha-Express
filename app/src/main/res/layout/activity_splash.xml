@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+* Criação de um layout do tipo ConstraintLayout. Ele é um container, ou seja, um elemento que segura outros componentes dentro dele.
+* Todos os atributos que começam com android: pertencem ao sistema Android.
+* xmlns:app define o namespace app, usado principalmente para atributos específicos de bibliotecas.
+* xmlns:tools define o namespace tools, usado para atributos que ajudam na visualização do layout no editor, mas não afetam a execução do aplicativo.
+* android:id="@+id/main" -> atribui um ID ao layout, permitindo que ele seja referenciado no código Java/Kotlin.
+* android:layout_width="match_parent" -> a largura ocupa todo o espaço do elemento pai.
+* android:layout_height="match_parent" -> a altura ocupa todo o espaço do elemento pai.
+* tools:context=".SplashActivity" -> indica que este layout está associado à SplashActivity, ajudando o editor a mostrar uma prévia correta.
+* android:background="#FFFFFF" -> define a cor de fundo do layout como branco.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity"
+    android:background="#FFFFFF">
+
+<!--
+* Criação de um componente do tipo ImageView (serve para mostrar imagens na tela).
+* Todos os atributos que começam com app: pertencem à biblioteca de ConstraintLayout, usada para definir as restrições de posicionamento dos elementos dentro do layout.
+* android:id="@+id/logo" -> atribui um ID ao ImageView, permitindo que ele seja referenciado no código Java/Kotlin (`@` significa que é uma referência, `+` indica que o ID deve ser criado, e `id/logo` é o nome do ID).
+* android:layout_width="200dp" -> define a largura do ImageView como 200 density-independent pixels (dp), uma unidade de medida que se adapta a diferentes densidades de tela.
+* android:layout_height="200dp" -> define a altura do ImageView como 200 density-independent pixels (dp), uma unidade de medida que se adapta a diferentes densidades de tela.
+* android:src="@drawable/logo" -> define a imagem a ser exibida no ImageView, referenciando um recurso de imagem chamado "logo" localizado na pasta res/drawable.
+* app:layout_constraintTop_toTopOf="parent" -> alinha a parte superior do ImageView com a parte superior do layout pai (ConstraintLayout).
+* app:layout_constraintBottom_toBottomOf="parent" -> alinha a parte inferior do ImageView com a parte inferior do layout pai (ConstraintLayout).
+* app:layout_constraintStart_toStartOf="parent" -> alinha a borda inicial (esquerda) do ImageView com a borda inicial do layout pai (ConstraintLayout).
+* app:layout_constraintEnd_toEndOf="parent" -> alinha a borda final (direita) do ImageView com a borda final do layout pai (ConstraintLayout).
+-->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout> <!-- Fechamento do container principal (ConstraintLayout) -->

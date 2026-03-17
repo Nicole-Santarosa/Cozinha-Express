@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+* Cria o layout raiz da tela. ConstraintLayout é um layout moderno do Android que permite posicionar elementos com restrições.
+* xmlns:android="http://schemas.android.com/apk/res/android" → Define o namespace para os atributos do Android, como android:layout_width, android:layout_height, etc.
+* xmlns:app="http://schemas.android.com/apk/res-auto" → Define o namespace para os atributos personalizados do aplicativo. É usado para propriedades específicas do ConstraintLayout.
+* xmlns:tools="http://schemas.android.com/tools" → Define o namespace para os atributos de ferramentas, que são usados apenas no editor de layout e não afetam a execução do aplicativo.
+* android:id="@+id/main" → Atribui um ID ao ConstraintLayout, permitindo que ele seja referenciado no código.
+* android:layout_width="match_parent" → Define a largura do layout para preencher toda a largura disponível da tela, de acordo com o pai.
+* android:layout_height="match_parent" → Define a altura do layout para preencher toda a altura disponível da tela, de acordo com o pai.
+* tools:context=".LoginActivity" → Especifica a atividade associada a este layout, o que ajuda o editor de layout a fornecer uma visualização mais precisa do design.
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,5 +17,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+
+<!--
+* Criação de um container para organizar os elementos de login verticalmente. LinearLayout organiza elementos em linha ou coluna.
+* android:layout_width="0dp" → Define a largura do LinearLayout para 0, o que significa que ele ocupará todo o espaço disponível entre as constraints.
+* android:layout_height="wrap_content" → Define a altura do LinearLayout para se ajustar ao conteúdo interno.
+* android:orientation="vertical" → Define a orientação do LinearLayout para vertical, organizando os elementos de cima para baixo.
+* android:padding="24dp" → Adiciona um preenchimento interno de 24dp em todos os lados do LinearLayout, criando espaço entre o conteúdo e as bordas do layout.
+* app:layout_constraintTop_toTopOf="parent" → Restringe a parte superior do LinearLayout à parte superior do ConstraintLayout pai (o topo do LinearLayout fica preso ao topo da tela).
+* app:layout_constraintBottom_toBottomOf="parent" → Restringe a parte inferior do LinearLayout à parte inferior do ConstraintLayout pai (a parte inferior do LinearLayout fica presa ao fundo da tela).
+* app:layout_constraintStart_toStartOf="parent" → Restringe a borda esquerda do LinearLayout à borda esquerda do ConstraintLayout pai (a borda esquerda do LinearLayout fica presa à borda esquerda da tela).
+* app:layout_constraintEnd_toEndOf="parent" → Restringe a borda direita do LinearLayout à borda direita do ConstraintLayout pai (a borda direita do LinearLayout fica presa à borda direita da tela).
+-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!--
+        * Cria um componente para mostrar uma imagem.
+        * android:layout_width="320dp" → Define a largura da ImageView para 120dp, um valor fixo.
+        * android:layout_height="267dp" → Define a altura da ImageView para 120dp, um valor fixo.
+        * android:src="@drawable/logo" → Define a imagem a ser exibida na ImageView, referenciando res/drawable/logo.png.
+        * android:layout_gravity="center" → Centraliza a ImageView dentro do LinearLayout.
+        * android:layout_marginBottom="20dp" → Adiciona uma margem abaixo da imagem.
+        -->
+        <ImageView
+            android:layout_width="320dp"
+            android:layout_height="267dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/logo" />
+
+        <!--
+        * Cria um componente para entrada de texto com um layout de campo de texto do Material Design.
+        * android:layout_width="match_parent" → Define a largura do TextInputLayout para preencher toda a largura disponível do LinearLayout (pai).
+        * android:layout_height="wrap_content" → Define a altura do TextInputLayout para se ajustar ao conteúdo interno.
+        * android:hint="E-mail" → Define um texto de dica que será exibido dentro do campo de texto quando ele estiver vazio.
+        * app:boxBackgroundMode="outline" → Define o modo de fundo do campo de texto para "outline", que exibe um contorno ao redor do campo.
+        * app:boxCornerRadiusTopStart="12dp" → Define o raio de canto superior esquerdo do campo de texto para deixar arredondado.
+        * app:boxCornerRadiusTopEnd="12dp" → Define o raio de canto superior direito do campo de texto para deixar arredondado.
+        * app:boxCornerRadiusBottomStart="12dp" → Define o raio de canto inferior esquerdo do campo de texto para deixar arredondado.
+        * app:boxCornerRadiusBottomEnd="12dp" → Define o raio de canto inferior direito do campo de texto para deixar arredondado.
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <!--
+            * Cria um componente para entrada de texto dentro do TextInputLayout, que é o campo onde o usuário digitará o e-mail.
+            * android:id="@+id/editEmail" → Atribui um ID ao TextInputEditText, permitindo que ele seja referenciado no código.
+            * android:layout_width="match_parent" → Define a largura do TextInputEditText para preencher toda a largura disponível do TextInputLayout (pai).
+            * android:layout_height="wrap_content" → Define a altura do TextInputEditText para se ajustar ao conteúdo interno.
+            * android:inputType="textEmailAddress" → Define o tipo de entrada do campo de texto como um endereço de e-mail, o que pode ativar sugestões de teclado específicas para e-mails e validação automática de formato de e-mail.
+            -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+        * Cria um componente para entrada de texto com um layout de campo de texto do Material Design.
+        * android:layout_width="match_parent" → Define a largura do TextInputLayout para preencher toda a largura disponível do LinearLayout (pai).
+        * android:layout_height="wrap_content" → Define a altura do TextInputLayout para se ajustar ao conteúdo interno.
+        * android:hint="Senha" → Define um texto de dica que será exibido dentro do campo de texto quando ele estiver vazio.
+        * android:layout_marginTop="10dp" → Adiciona uma margem acima do campo de texto para criar espaço entre o campo de e-mail e o campo de senha.
+        * app:boxBackgroundMode="outline" → Define o modo de fundo do campo de texto para "outline", que exibe um contorno ao redor do campo.
+        * app:boxCornerRadiusTopStart="12dp" → Define o raio de canto superior esquerdo do campo de texto para deixar arredondado.
+        * app:boxCornerRadiusTopEnd="12dp" → Define o raio de canto superior direito do campo de texto para deixar arredondado.
+        * app:boxCornerRadiusBottomStart="12dp" → Define o raio de canto inferior esquerdo do campo de texto para deixar arredondado.
+        * app:boxCornerRadiusBottomEnd="12dp" → Define o raio de canto inferior direito do campo de texto para deixar arredondado.
+        * app:endIconMode="password_toggle" → Adiciona um ícone no final do campo de texto que permite ao usuário alternar a visibilidade da senha (mostrar/ocultar).
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Senha"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:endIconMode="password_toggle">
+
+            <!--
+            * Cria um componente para entrada de texto dentro do TextInputLayout, que é o campo onde o usuário digitará a senha.
+            * android:id="@+id/editSenha" → Atribui um ID ao TextInputEditText, permitindo que ele seja referenciado no código.
+            * android:layout_width="match_parent" → Define a largura do TextInputEditText para preencher toda a largura disponível do TextInputLayout (pai).
+            * android:layout_height="wrap_content" → Define a altura do TextInputEditText para se ajustar ao conteúdo interno.
+            * android:inputType="textPassword" → Define o tipo de entrada do campo de texto como senha, o que faz com que os caracteres digitados sejam ocultados (exibidos como pontos ou asteriscos) para proteger a privacidade do usuário.
+            -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+        * Cria um componente de botão para o usuário clicar e tentar fazer login.
+        * android:id="@+id/btnLogin" → Atribui um ID ao Button, permitindo que ele seja referenciado no código.
+        * android:layout_width="match_parent" → Define a largura do Button para preencher toda a largura disponível do LinearLayout (pai).
+        * android:layout_height="wrap_content" → Define a altura do Button para se ajustar ao conteúdo interno.
+        * android:text="Entrar" → Define o texto exibido no botão.
+        * android:layout_marginTop="20dp" → Adiciona uma margem acima do botão para criar espaço entre o campo de senha e o botão de login.
+        * android:backgroundTint="#4CAF50" → Define a cor de fundo do botão.
+        * android:textColor="#FFFFFF" → Define a cor do texto do botão.
+        -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

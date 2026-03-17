@@ -1,10 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--
+* Define que o layout principal da tela será um ConstraintLayout. O ConstraintLayout é um tipo de layout que posiciona os elementos usando restrições.
+* xmlns:android="http://schemas.android.com/apk/res/android" → Define o namespace para os atributos do Android.
+* xmlns:app="http://schemas.android.com/apk/res-auto" → Define o namespace para os atributos personalizados do aplicativo.
+* xmlns:tools="http://schemas.android.com/tools" → Define o namespace para os atributos de ferramentas, usados apenas no editor de layout.
+* android:id="@+id/main" → Define um ID para o ConstraintLayout, permitindo que ele seja referenciado no código.
+* android:layout_width="match_parent" → Define a largura do layout para preencher toda a largura da tela, de acordo com o pai (ConstraintLayout).
+* android:layout_height="match_parent" → Define a altura do layout para preencher toda a altura da tela, de acordo com o pai (ConstraintLayout).
+* tools:context=".IntegrantesActivity" → Especifica a atividade associada a este layout, útil para pré-visualização no editor de layout.
+* android:padding="20dp" → Adiciona um espaçamento interno em todos os lados do layout.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IntegrantesActivity">
+    tools:context=".IntegrantesActivity"
+    android:padding="20dp">
+
+    <!--
+    * Define um TextView para exibir o título "Integrantes do Projeto".
+    * android:id="@+id/titulo" → Define um ID para o TextView, permitindo que ele seja referenciado no código.
+    * android:layout_width="wrap_content" → Define a largura do TextView para se ajustar ao conteúdo.
+    * android:layout_height="wrap_content" → Define a altura do TextView para se ajustar ao conteúdo.
+    * android:text="Integrantes do Projeto" → Define o texto a ser exibido no TextView.
+    * android:textSize="24sp" → Define o tamanho do texto para 24sp (scale-independent pixels).
+    * android:textStyle="bold" → Define o estilo do texto como negrito.
+    * android:textColor="#FF6B00" → Define a cor do texto.
+    * app:layout_constraintTop_toTopOf="parent" → Restringe a parte superior do TextView ao topo do ConstraintLayout pai.
+    * app:layout_constraintStart_toStartOf="parent" → Restringe a parte inicial do TextView ao início do ConstraintLayout pai.
+    * app:layout_constraintEnd_toEndOf="parent" → Restringe a parte final do TextView ao final do ConstraintLayout pai, centralizando-o horizontalmente.
+    -->
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Integrantes do Projeto"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FF6B00"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--
+    * Define um TableLayout para exibir uma tabela de integrantes do projeto.
+    * android:id="@+id/tabelaIntegrantes" → Define um ID para o TableLayout, permitindo que ele seja referenciado no código.
+    * android:layout_width="0dp" → Define a largura do TableLayout para 0dp, permitindo que ele se expanda para preencher o espaço disponível entre as restrições.
+    * android:layout_height="wrap_content" → Define a altura do TableLayout para se ajustar ao conteúdo.
+    * android:stretchColumns="*" → Define que todas as colunas do TableLayout devem se esticar para preencher o espaço disponível.
+    * app:layout_constraintTop_toBottomOf="@id/titulo" → Define que a tabela ficará abaixo do título.
+    * app:layout_constraintStart_toStartOf="parent" → Restringe a parte inicial do TableLayout ao início do ConstraintLayout pai (alinha à esquerda).
+    * app:layout_constraintEnd_toEndOf="parent" → Restringe a parte final do TableLayout ao final do ConstraintLayout pai, centralizando-o horizontalmente (alinha à direita).
+    * android:layout_marginTop="20dp" → Adiciona uma margem superior para criar um espaçamento entre o TextView e o TableLayout.
+    -->
+    <TableLayout
+        android:id="@+id/tabelaIntegrantes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
+
+    <!-- Cria uma linha da tabela. -->
+        <TableRow>
+
+            <!--
+            * Define um TextView para exibir o título da coluna.
+            * android:text="Nome" → Define o texto a ser exibido no TextView.
+            * android:textStyle="bold" → Define o estilo do texto como negrito.
+            * android:padding="8dp" → Adiciona um espaçamento interno em todos os lados do TextView.
+            -->
+            <TextView
+                android:text="Nome"
+                android:textStyle="bold"
+                android:padding="8dp"/>
+
+            <TextView
+                android:text="Matrícula"
+                android:textStyle="bold"
+                android:padding="8dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="Nicole Santarosa de Luca"
+                android:padding="8dp"/>
+
+            <TextView
+                android:text="2231823"
+                android:padding="8dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="Rafael Calixto Avelar Marcelino"
+                android:padding="8dp"/>
+
+            <TextView
+                android:text="2223579"
+                android:padding="8dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <!--
+    * Define um Button para permitir que o usuário volte para a tela principal.
+    * android:id="@+id/botaoPrincipal" → Define um ID para o Button, permitindo que ele seja referenciado no código.
+    * android:layout_width="0dp" → Define a largura do Button para 0dp, permitindo que ele se expanda para preencher o espaço disponível entre as restrições.
+    * android:layout_height="wrap_content" → Define a altura do Button para se ajustar ao conteúdo.
+    * android:text="Voltar" → Define o texto a ser exibido no Button.
+    * app:layout_constraintTop_toBottomOf="@id/tabelaIntegrantes" → Define que o Button ficará abaixo do TableLayout.
+    * app:layout_constraintStart_toStartOf="parent" → Restringe a parte inicial do Button ao início do ConstraintLayout pai (alinha à esquerda).
+    * app:layout_constraintEnd_toEndOf="parent" → Restringe a parte final do Button ao final do ConstraintLayout pai, centralizando-o horizontalmente (alinha à direita).
+    * android:layout_marginTop="30dp" → Adiciona uma margem superior para criar um espaçamento entre o TableLayout e o Button.
+    -->
+    <Button
+        android:id="@+id/botaoPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        app:layout_constraintTop_toBottomOf="@id/tabelaIntegrantes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/botaoLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        app:layout_constraintTop_toBottomOf="@id/botaoPrincipal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
